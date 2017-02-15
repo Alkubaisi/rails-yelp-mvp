@@ -1,0 +1,60 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+    <h1>Restaurants</h1>
+      <p id="notice"><%= notice %></p>
+
+
+
+      <% @restaurants.each do |restaurant| %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://static.pexels.com/photos/5938/food-salad-healthy-lunch.jpg'); ">
+        <div class="card-category"> <h1> <%= restaurant.name %></h1></div>
+        <div class="card-description">
+
+         <h4>Adress: <%= restaurant.address %></h4  >
+           <h4>Number: <%= restaurant.phone_number %></h4>
+           <h4>Type: <%= restaurant.category %></h4>
+
+         </div>
+         <%= link_to "#", restaurant, class: "card-link" %>
+
+
+       </div>
+       <ul class="list-inline">
+
+         <li>
+          <%= link_to edit_restaurant_path(restaurant) do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li>
+
+          <%= link_to restaurant, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+
+
+
+
+        </li>
+        <% end  %>
+
+      </ul>
+      <% end %>
+
+
+
+<%= link_to 'New Restaurant', new_restaurant_path, class: "btn btn-primary" %>
+
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+

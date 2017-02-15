@@ -1,0 +1,52 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+<p id="notice"><%= notice %></p>
+
+<p>
+
+  <h1 style="text-transform: uppercase;">  <%= @restaurant.name %></h1>
+</p>
+
+<p>
+  <strong>Address:</strong><br>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong><br>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Category:</strong><br>
+  <%= @restaurant.category %>
+</p>
+<p>
+  <strong>Reviews:</strong>
+  <ul>
+
+
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> | <%= raw ("#{icon('star-o')} " * review.rating.to_i) %>  |
+<%= link_to 'Destroy', restaurant_review_path(restaurant_id: @restaurant.id, id: review.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %> |
+<%= link_to 'Add Review', new_restaurant_review_path(@restaurant) %>
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
